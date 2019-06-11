@@ -31,7 +31,7 @@ export default function({
   pages,
 }) {
   const currentPage = pages.find(page => page.meta.id === meta.id)
-  const root = environment === 'development' ? '' : '/asoiaf'
+  const root = environment === 'development' ? '' : '/asoiaf-note'
 
   return (
     <html>
