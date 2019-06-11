@@ -1,0 +1,39 @@
+* {
+  color: rgb(58, 58, 58);
+  font-family: 'Open Sans', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑',
+    'STHeiti', 'WenQuanYi Micro Hei', SimSun, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(51, 51, 51);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #aaa;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: #1088b7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0a5471;
+  text-decoration: underline;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

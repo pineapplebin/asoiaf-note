@@ -1,0 +1,21 @@
+{
+  "name": "asoiaf-note",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run gen-chapter-meta && charge serve src",
+    "build": "npm run gen-chapter-meta && charge build src dist",
+    "gen-chapter-meta": "node ./scripts/update-chapter-index.js"
+  },
+  "devDependencies": {
+    "@static/charge": "^1.4.0",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "gh-pages": "^2.0.1"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.12"
+  }
+}

@@ -1,0 +1,98 @@
+import styled from '@emotion/styled'
+
+const IMG_SOURCE = {
+  [1]: 'https://vignette.wikia.nocookie.net/asoiaf/images/9/93/AGameOfThrones.jpg/revision/latest/scale-to-width-down/220?cb=20140802162005&path-prefix=zh',
+}
+
+const BOOK_NAME = {
+  [1]: '权力的游戏',
+}
+
+const CoverHolder = styled.div`
+  width: 100%;
+  max-width: 60vw;
+  border: 1px solid #aaa;
+  padding: 5px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+`
+
+const Cover = styled.img`
+  width: 100%;
+`
+
+const NavContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  .current {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+export default ({ volNo, chapIndex, title = '', pov = null }) => {
+  const meta = require(`../chapters/vol-${volNo}/meta.json`)
+  const currentChap = meta[chapIndex]
+  const prevChap = meta[chapIndex - 1]
+  const nextChap = meta[chapIndex + 1]
+  const nextPovChap = meta.find((chap, index) => {
+    const regexp = new RegExp(`^${currentChap.title.split(' ')[0]}`)
+    return index > chapIndex && regexp.test(chap.title)
+  })
+
+  return (
+    <div className="row">
+      <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <h1>
+          {BOOK_NAME[volNo]} - {title}
+        </h1>
+        <p>
+          <strong>视点人物：</strong>
+          {pov}
+        </p>
+        <NavContainer>
+          {prevChap && (
+            <div className="prev">
+              <strong>
+                <a href={prevChap.link}>{prevChap.title}</a>
+              </strong>
+              <span style={{ margin: `0 10px` }}>&larr;</span>
+            </div>
+          )}
+          <div className="current">
+            <strong>{currentChap.title}</strong>
+            {nextPovChap && (
+              <>
+                <span style={{ margin: `10px 0` }}>&darr;</span>
+                <strong>
+                  <a href={nextPovChap.link}>{nextPovChap.title}</a>
+                </strong>
+              </>
+            )}
+          </div>
+          {nextChap && (
+            <div className="next">
+              <span style={{ margin: `0 10px` }}>&rarr;</span>
+              <strong>
+                <a href={nextChap.link}>{nextChap.title}</a>
+              </strong>
+            </div>
+          )}
+        </NavContainer>
+      </div>
+      <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <CoverHolder>
+          <Cover src={IMG_SOURCE[volNo]} />
+          <div className="flex-center">
+            <a href={`/chapters/vol-${volNo}/index.html`}>{BOOK_NAME[volNo]}</a>
+            <span>章节</span>
+          </div>
+        </CoverHolder>
+      </div>
+    </div>
+  )
+}

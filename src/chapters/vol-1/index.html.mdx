@@ -1,0 +1,20 @@
+import Layout from '../layout.html.jsx'
+import chapMeta from './meta.json'
+
+export const meta = {
+  vol: 1,
+  id: 'chapters-vol-1',
+  title: '权力的游戏',
+}
+
+export const layout = props => <Layout currentPageId={meta.id} {...props} />
+
+# 权力的游戏章节
+
+<ol start="0">
+  {chapMeta.map(chap => (
+    <li key={chap.index}>
+      <a href={chap.link}>{chap.title}</a>
+    </li>
+  ))}
+</ol>

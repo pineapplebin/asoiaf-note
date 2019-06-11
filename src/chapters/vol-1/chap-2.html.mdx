@@ -1,0 +1,36 @@
+import Layout from '../layout.html.jsx'
+import BookCover from '../../components/BookCover.html.jsx'
+import WikiLink from '../../components/WikiLink.html.jsx'
+import Illustration from '../../components/Illustration.html.jsx'
+
+export const meta = {
+  vol: 1,
+  index: 2,
+  id: 'chapters-vol-1-chap-2',
+  title: '凯特琳 I',
+}
+
+export const layout = props => <Layout currentPageId={meta.id} {...props} />
+
+<BookCover
+  volNo={meta.vol}
+  chapIndex={meta.index}
+  title={meta.title}
+  pov={<WikiLink name="凯特琳·徒利" />}
+/>
+
+---
+
+## 概要
+
+<WikiLink name="凯特琳·徒利" />去了<WikiLink name="临冬城" />的<WikiLink name="神木林" />，她知道丈夫每次杀人后都会去那。相比起<WikiLink name="奔流城" />阳光明媚的神木林，她不喜欢这里的阴暗原始。当他找到艾德，他问她孩子们如何，凯特琳告诉他他们正在给狼取名。
+
+<Illustration
+  width="30vw"
+  src="https://awoiaf.westeros.org/images/0/0b/Ned_%26_Ice.jpg"
+  desc="奈德在擦拭寒冰"
+/>
+
+艾德说他杀的已经是这一年里的第四个了。<WikiLink name="守夜人" />一直在减少，终有一天他将亲自与<WikiLink name="曼斯·雷德" />战斗。凯特琳警示他长城之外还有更加阴暗的生物。
+
+艾德询问凯特琳为何而来，她将艾德的养父、也是她的连襟——<WikiLink name="琼恩·艾林" />的死讯告诉了他。这消息是国王<WikiLink name="劳勃" />亲手所写。凯特琳说艾林的寡妇和遗子已经回了<WikiLink name="鹰巢城" />。艾德鼓励凯特琳带着孩子们去陪陪她的姐姐，但凯特琳说劳勃·拜拉席恩同时来信说他将亲临临冬城。这消息让艾德很高兴，他们决定送信给还在长城上艾德的弟弟<WikiLink name="班扬" linkName="班扬·史塔克" />。凯特琳说劳勃的妻子<WikiLink name="瑟曦·兰尼斯特" />，他们的孩子，以及她的两位兰尼斯特家族的兄弟也都来了。

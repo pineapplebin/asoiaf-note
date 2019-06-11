@@ -1,0 +1,45 @@
+import Layout from '../layout.html.jsx'
+import BookCover from '../../components/BookCover.html.jsx'
+import WikiLink from '../../components/WikiLink.html.jsx'
+import Illustration from '../../components/Illustration.html.jsx'
+
+export const meta = {
+  vol: 1,
+  index: 1,
+  id: 'chapters-vol-1-chap-1',
+  title: '布兰 I',
+}
+
+export const layout = props => <Layout currentPageId={meta.id} {...props} />
+
+<BookCover
+  volNo={meta.vol}
+  chapIndex={meta.index}
+  title={meta.title}
+  pov={<WikiLink name="布兰·史塔克" />}
+/>
+
+---
+
+## 概要
+
+<WikiLink name="布兰" />与父亲<WikiLink name="艾德·史塔克" />公爵及其他二十几人同去围观父亲执行国王的律法。这是布兰第一次获准参加。布兰的哥哥<WikiLink name="罗柏" />认为受刑者一定是个<WikiLink name="野人" />，这不禁让布兰想起了<WikiLink name="老奶妈" />曾经讲过的有关野人的故事。而到达时他们才发现受刑者原来是<WikiLink name="守夜人" />弟兄的逃兵。手下将受刑者（序章中的<WikiLink name="盖瑞" />）带上，而<WikiLink name="席恩" />为艾德递上了宝剑<WikiLink name="寒冰" />。<WikiLink name="琼恩" />告诉布兰行刑中不要转头，布兰看着父亲亲手砍下了那人的头。
+
+<Illustration
+  width="30vw"
+  src="https://awoiaf.westeros.org/images/5/5d/Neds_justice_by_abepapakhian.jpg"
+  desc="奈德·史塔克亲自行刑"
+/>
+
+回<WikiLink name="临冬城" />的路上，罗柏与琼恩争论起那个叛逃者是否死得很勇敢，而赛起了马。艾德上前与布兰交谈，他问布兰是否知道为何他要亲自处决犯人。他解释道<WikiLink name="史塔克家族" />是<WikiLink name="先民" />的子孙，相信一个人若要判决他人死刑应该亲自动手，否则他会对下令处死渐渐麻木。史塔克家族依旧秉持着这个原则。
+
+琼恩在前头唤道，让大家去看看他和罗柏发现了什么。他们发现了一具和布兰骑的小马一样大的<WikiLink name="冰原狼" />的尸体。然而冰原狼在<WikiLink name="长城" />以南已经有两百多年没有出现过了。
+
+罗柏从五只小狼崽中抱起一只，然后他又给了布兰一只。当他们检查母狼尸体时，发现了一块很大的断裂的鹿角插在母狼的咽喉中。队伍中的士兵认为这是个不祥之兆。席恩提出杀了这些小狼崽，但布兰不让。罗柏说他们可以养育狼崽。琼恩指出五只狼崽，艾德的合法子女一人拥有一只，他们应该拥有这些小狼。
+
+艾德说孩子们必须亲自喂养这些狼崽，不能丢给仆人，必须很好地训练他们，不然长大后他们将变的很危险。当他们开始踏上回程时，琼恩听到些许声音，回身发现了第六只幼兽，雪白的皮毛、血红的瞳孔。它已经爬离了它的母亲。琼恩将它作为了自己的狼。
+
+<Illustration
+  src="https://awoiaf.westeros.org/images/0/0d/Mark_Evans_direwolf_pups.jpg"
+  desc="众人发现冰原狼的尸体与幼崽"
+/>

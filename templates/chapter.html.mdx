@@ -1,0 +1,24 @@
+import Layout from '../layout.html.jsx'
+import BookCover from '../../components/BookCover.html.jsx'
+import WikiLink from '../../components/WikiLink.html.jsx'
+import Illustration from '../../components/Illustration.html.jsx'
+
+export const meta = {
+  vol: 1,
+  index: 0,
+  id: 'chapters-vol-1-chap-0',
+  title: '',
+}
+
+export const layout = props => <Layout currentPageId={meta.id} {...props} />
+
+<BookCover
+  volNo={meta.vol}
+  chapIndex={meta.index}
+  title={meta.title}
+  pov={<WikiLink name="布兰" />}
+/>
+
+---
+
+## 概要
