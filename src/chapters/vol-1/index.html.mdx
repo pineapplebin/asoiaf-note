@@ -7,7 +7,9 @@ export const meta = {
   title: '权力的游戏',
 }
 
-export const layout = props => <Layout currentPageId={meta.id} {...props} />
+export const layout = props => (
+  <Layout meta={meta} hasCover={false} {...props} />
+)
 
 # 权力的游戏章节
 

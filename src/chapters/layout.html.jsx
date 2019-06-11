@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import BookCover from '../components/BookCover.html.jsx'
 
 const Container = styled.div`
   width: 100vw;
@@ -21,8 +22,16 @@ function getTitle(page) {
   return `${originTitle || 'Page'} - The Song of Ice and Fire`
 }
 
-export default function({ children, currentPageId, pages }) {
-  const currentPage = pages.find(page => page.meta.id === currentPageId)
+export default function({
+  meta,
+  pov,
+  hasCover = true,
+  children,
+  environment,
+  pages,
+}) {
+  const currentPage = pages.find(page => page.meta.id === meta.id)
+  const root = environment === 'development' ? '' : '/asoiaf'
 
   return (
     <html>
@@ -33,13 +42,27 @@ export default function({ children, currentPageId, pages }) {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
         <title>{getTitle(currentPage)}</title>
-        <link rel="stylesheet" href="/styles/modern-normalize.css" />
-        <link rel="stylesheet" href="/styles/flexboxgrid.min.css"/>
-        <link rel="stylesheet" href="/styles/chapters.css" />
+        <link rel="stylesheet" href={`${root}/styles/modern-normalize.css`} />
+        <link rel="stylesheet" href={`${root}/styles/flexboxgrid.min.css`} />
+        <link rel="stylesheet" href={`${root}/styles/chapters.css`} />
       </head>
       <body>
         <Container>
-          <Block>{children}</Block>
+          <Block>
+            {hasCover && (
+              <>
+                <BookCover
+                  root={root}
+                  volNo={meta.vol}
+                  chapIndex={meta.index}
+                  title={meta.title}
+                  pov={pov}
+                />
+                <hr />
+              </>
+            )}
+            {children}
+          </Block>
         </Container>
       </body>
     </html>

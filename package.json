@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npm run gen-chapter-meta && charge serve src",
+    "start": "NODE_ENV=development && npm run gen-chapter-meta && charge serve src",
     "build": "npm run gen-chapter-meta && charge build src dist",
+    "deploy": "npm run build && gh-pages -d dist",
     "gen-chapter-meta": "node ./scripts/update-chapter-index.js"
   },
   "devDependencies": {

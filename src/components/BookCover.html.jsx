@@ -34,7 +34,7 @@ const NavContainer = styled.div`
   }
 `
 
-export default ({ volNo, chapIndex, title = '', pov = null }) => {
+export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
   const meta = require(`../chapters/vol-${volNo}/meta.json`)
   const currentChap = meta[chapIndex]
   const prevChap = meta[chapIndex - 1]
@@ -58,7 +58,7 @@ export default ({ volNo, chapIndex, title = '', pov = null }) => {
           {prevChap && (
             <div className="prev">
               <strong>
-                <a href={prevChap.link}>{prevChap.title}</a>
+                <a href={root + prevChap.link}>{prevChap.title}</a>
               </strong>
               <span style={{ margin: `0 10px` }}>&larr;</span>
             </div>
@@ -69,7 +69,7 @@ export default ({ volNo, chapIndex, title = '', pov = null }) => {
               <>
                 <span style={{ margin: `10px 0` }}>&darr;</span>
                 <strong>
-                  <a href={nextPovChap.link}>{nextPovChap.title}</a>
+                  <a href={root + nextPovChap.link}>{nextPovChap.title}</a>
                 </strong>
               </>
             )}
@@ -78,7 +78,7 @@ export default ({ volNo, chapIndex, title = '', pov = null }) => {
             <div className="next">
               <span style={{ margin: `0 10px` }}>&rarr;</span>
               <strong>
-                <a href={nextChap.link}>{nextChap.title}</a>
+                <a href={root + nextChap.link}>{nextChap.title}</a>
               </strong>
             </div>
           )}
@@ -88,7 +88,9 @@ export default ({ volNo, chapIndex, title = '', pov = null }) => {
         <CoverHolder>
           <Cover src={IMG_SOURCE[volNo]} />
           <div className="flex-center">
-            <a href={`/chapters/vol-${volNo}/index.html`}>{BOOK_NAME[volNo]}</a>
+            <a href={`${root}/chapters/vol-${volNo}/index.html`}>
+              {BOOK_NAME[volNo]}
+            </a>
             <span>章节</span>
           </div>
         </CoverHolder>
