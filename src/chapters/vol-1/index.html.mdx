@@ -1,5 +1,6 @@
 import Layout from '../layout.html.jsx'
 import chapMeta from './meta.json'
+import { getSiteRoot } from '../../utils/tools.js'
 
 export const meta = {
   vol: 1,
@@ -7,16 +8,18 @@ export const meta = {
   title: '权力的游戏',
 }
 
-export const layout = props => (
-  <Layout meta={meta} hasCover={false} {...props} />
-)
-
-# 权力的游戏章节
-
-<ol start="0">
-  {chapMeta.map(chap => (
-    <li key={chap.index}>
-      <a href={chap.link}>{chap.title}</a>
-    </li>
-  ))}
-</ol>
+export const layout = props => {
+  const root = getSiteRoot(props.environment)
+  return (
+    <Layout meta={meta} hasCover={false} {...props}>
+      <h1>权力的游戏章节</h1>
+      <ol start="0">
+        {chapMeta.map(chap => (
+          <li key={chap.index}>
+            <a href={root + chap.link}>{chap.title}</a>
+          </li>
+        ))}
+      </ol>
+    </Layout>
+  )
+}

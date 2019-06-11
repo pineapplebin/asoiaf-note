@@ -1,3 +1,3 @@
-export function getSiteRoot() {
-  return process.env.NODE_ENV === 'development' ? '' : '/asoiaf'
+export function getSiteRoot(env) {
+  return env === 'development' ? '' : '/asoiaf-note'
 }

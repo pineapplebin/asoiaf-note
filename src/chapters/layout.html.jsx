@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import BookCover from '../components/BookCover.html.jsx'
+import { getSiteRoot } from '../utils/tools.js'
 
 const Container = styled.div`
   width: 100vw;
@@ -31,7 +32,7 @@ export default function({
   pages,
 }) {
   const currentPage = pages.find(page => page.meta.id === meta.id)
-  const root = environment === 'development' ? '' : '/asoiaf-note'
+  const root = getSiteRoot(environment)
 
   return (
     <html>
