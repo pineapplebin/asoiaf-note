@@ -1,12 +1,5 @@
 import styled from '@emotion/styled'
-
-const IMG_SOURCE = {
-  [1]: 'https://vignette.wikia.nocookie.net/asoiaf/images/9/93/AGameOfThrones.jpg/revision/latest/scale-to-width-down/220?cb=20140802162005&path-prefix=zh',
-}
-
-const BOOK_NAME = {
-  [1]: '权力的游戏',
-}
+import { getVolData } from '../utils/tools.js'
 
 const CoverHolder = styled.div`
   width: 100%;
@@ -43,12 +36,13 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
     const regexp = new RegExp(`^${currentChap.title.split(' ')[0]}`)
     return index > chapIndex && regexp.test(chap.title)
   })
+  const currentVol = getVolData(volNo)
 
   return (
     <div className="row">
       <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <h1>
-          {BOOK_NAME[volNo]} - {title}
+          {currentVol.title} - {title}
         </h1>
         <p>
           <strong>视点人物：</strong>
@@ -86,10 +80,10 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
       </div>
       <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
         <CoverHolder>
-          <Cover src={IMG_SOURCE[volNo]} />
+          <Cover src={currentVol.cover} />
           <div className="flex-center">
             <a href={`${root}/chapters/vol-${volNo}/index.html`}>
-              {BOOK_NAME[volNo]}
+              {currentVol.title}
             </a>
             <span>章节</span>
           </div>

@@ -10,15 +10,6 @@ export const meta = {
   title: '',
 }
 
-export const layout = props => <Layout currentPageId={meta.id} {...props} />
-
-<BookCover
-  volNo={meta.vol}
-  chapIndex={meta.index}
-  title={meta.title}
-  pov={<WikiLink name="布兰" />}
-/>
-
----
+export const layout = props => <Layout meta={meta} pov={null} {...props} />
 
 ## 概要
