@@ -11,7 +11,17 @@ export const meta = {
 }
 
 export const layout = props => (
-  <Layout meta={meta} pov={<WikiLink name="布兰·史塔克" />} {...props} />
+  <Layout
+    meta={meta}
+    pov={<WikiLink name="布兰·史塔克" />}
+    place={
+      <span>
+        <WikiLink name="临冬城" />
+        北边
+      </span>
+    }
+    {...props}
+  />
 )
 
 ## 概要

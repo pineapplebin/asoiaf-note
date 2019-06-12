@@ -8,6 +8,10 @@ const CoverHolder = styled.div`
   padding: 5px;
   background-color: #f9f9f9;
   font-size: 14px;
+
+  & > div {
+    margin: 5px 0;
+  }
 `
 
 const Cover = styled.img`
@@ -27,11 +31,22 @@ const NavContainer = styled.div`
   }
 `
 
-export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
+export default ({
+  root,
+  volNo,
+  chapIndex,
+  title = '',
+  pov = null,
+  place = null,
+}) => {
   const meta = require(`../chapters/vol-${volNo}/meta.json`)
   const currentChap = meta[chapIndex]
   const prevChap = meta[chapIndex - 1]
   const nextChap = meta[chapIndex + 1]
+  const prevPovChap = meta.find((chap, index) => {
+    const regexp = new RegExp(`^${currentChap.title.split(' ')[0]}`)
+    return index < chapIndex && regexp.test(chap.title)
+  })
   const nextPovChap = meta.find((chap, index) => {
     const regexp = new RegExp(`^${currentChap.title.split(' ')[0]}`)
     return index > chapIndex && regexp.test(chap.title)
@@ -44,13 +59,12 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
         <h1>
           {currentVol.title} - {title}
         </h1>
-        <p>
-          <strong>视点人物：</strong>
-          {pov}
-        </p>
         <NavContainer>
           {prevChap && (
-            <div className="prev">
+            <div
+              className="prev"
+              style={{ marginTop: prevPovChap ? '52px' : 0 }}
+            >
               <strong>
                 <a href={root + prevChap.link}>{prevChap.title}</a>
               </strong>
@@ -58,6 +72,14 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
             </div>
           )}
           <div className="current">
+            {prevPovChap && (
+              <div className="flex-center" style={{ flexDirection: 'column' }}>
+                <strong>
+                  <a href={root + prevPovChap.link}>{prevPovChap.title}</a>
+                </strong>
+                <span style={{ margin: `10px 0` }}>&uarr;</span>
+              </div>
+            )}
             <strong>{currentChap.title}</strong>
             {nextPovChap && (
               <>
@@ -69,7 +91,10 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
             )}
           </div>
           {nextChap && (
-            <div className="next">
+            <div
+              className="next"
+              style={{ marginTop: prevPovChap ? '52px' : 0 }}
+            >
               <span style={{ margin: `0 10px` }}>&rarr;</span>
               <strong>
                 <a href={root + nextChap.link}>{nextChap.title}</a>
@@ -86,6 +111,15 @@ export default ({ root, volNo, chapIndex, title = '', pov = null }) => {
               {currentVol.title}
             </a>
             <span>章节</span>
+            <span style={{ marginLeft: '10px' }}>{chapIndex}</span>
+          </div>
+          <div className="flex-center">
+            <strong>视点人物：</strong>
+            {pov}
+          </div>
+          <div className="flex-center">
+            <strong>发生地点：</strong>
+            {place}
           </div>
         </CoverHolder>
       </div>

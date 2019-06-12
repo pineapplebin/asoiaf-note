@@ -11,7 +11,12 @@ export const meta = {
 }
 
 export const layout = props => (
-  <Layout meta={meta} pov={<WikiLink name="凯特琳·徒利" />} {...props} />
+  <Layout
+    meta={meta}
+    pov={<WikiLink name="凯特琳·徒利" />}
+    place={<WikiLink name="临冬城" />}
+    {...props}
+  />
 )
 
 ## 概要
@@ -21,7 +26,7 @@ export const layout = props => (
 <Illustration
   width="50vw"
   src="https://awoiaf.westeros.org/images/0/0b/Ned_%26_Ice.jpg"
-  desc="奈德在擦拭寒冰"
+  desc="艾德在擦拭寒冰"
 />
 
 艾德说他杀的已经是这一年里的第四个了。<WikiLink name="守夜人" />一直在减少，终有一天他将亲自与<WikiLink name="曼斯·雷德" />战斗。凯特琳警示他长城之外还有更加阴暗的生物。

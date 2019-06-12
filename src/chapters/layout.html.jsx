@@ -26,6 +26,7 @@ function getTitle(page) {
 export default function({
   meta,
   pov,
+  place,
   hasCover = true,
   children,
   environment,
@@ -58,6 +59,7 @@ export default function({
                   chapIndex={meta.index}
                   title={meta.title}
                   pov={pov}
+                  place={place}
                 />
                 <hr />
               </>
