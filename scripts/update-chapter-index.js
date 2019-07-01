@@ -9,7 +9,7 @@ const ROOT = path.resolve(__dirname, '..', 'src', 'chapters')
 function getChaptersDir() {
   return fs
     .readdirSync(ROOT)
-    .filter(name => /^vol-/.test(name))
+    .filter(name => /^vol-\d+/.test(name))
     .map(name => path.resolve(ROOT, name))
 }
 
@@ -19,9 +19,12 @@ function getChaptersDir() {
  * @returns {string[]}
  */
 function readDirFilesSync(dir) {
+  const CHAP_REG = /^chap-(\d+)\.html\.mdx$/
+
   return fs
     .readdirSync(dir)
-    .filter(name => /^chap-/.test(name))
+    .filter(name => CHAP_REG.test(name))
+    .sort((aName, bName) => +aName.match(CHAP_REG)[1] - +bName.match(CHAP_REG)[1])
     .map(name =>
       fs.readFileSync(path.resolve(dir, name), { encoding: 'utf-8' })
     )
